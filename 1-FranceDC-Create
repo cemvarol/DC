@@ -4,7 +4,7 @@ B=${A:$(echo `expr index "$A" @`)}
 C=${B:: -24}
 D=$(echo "$C"con01)
 E=$(echo "$C"con02)
-RG=Containers
+RG=DC
 L=FranceCentral
 
 
