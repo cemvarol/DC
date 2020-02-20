@@ -1,0 +1,26 @@
+az group create --name DC --location 'FranceCentral'
+
+a=$(az ad signed-in-user show --query userPrincipalName)
+A=$(echo "$a" | sed -e 's/\(.*\)/\L\1/')
+B=${A:$(echo `expr index "$A" @`)}
+C=${B:: -24}
+D=$(echo "$C"dc01)
+
+
+az storage account create --name $D --resource-group DC --kind Storage --location FranceCentral --sku Standard_LRS
+
+
+az network nsg create -g DC -n DCNSG
+az network nsg rule create -g DC --nsg-name DCNSG -n ConRule --priority 100 --destination-port-ranges "*" --direction Inbound
+
+
+az network vnet create --resource-group DC --name DC-VNet  --address-prefixes 10.207.0.0/16 --subnet-name SN01 --subnet-prefix 10.207.1.0/24
+
+export SUBNETID=$(az network vnet subnet show --resource-group DC --vnet-name DC-VNet --name SN01 --query id -o tsv)
+export SUBNETN=$(az network vnet subnet show --resource-group DC --vnet-name DC-VNet --name SN01 --query name -o tsv)
+
+az network vnet subnet update -g DC --vnet-name DC-VNet --name $SUBNETN --network-security-group DCNSG
+
+az vm create --resource-group DC --name FRC-DC01 --location FranceCentral --image Win2019DataCenter --admin-username cem --admin-password 1q2w3e4r5t6y* --size standard_D4s_v3 --public-ip-address "FRC-DC01-Pip" --subnet $SUBNETID --boot-diagnostics-storage $D --license-type Windows_Server --nsg ""
+
+
