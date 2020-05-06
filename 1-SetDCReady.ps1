@@ -1,3 +1,6 @@
+Set-NetFirewallProfile -Enabled False
+
+
 $url = "https://raw.githubusercontent.com/cemvarol/DC/master/ChromeInstall.ps1"
 $output1 = "$env:USERPROFILE\downloads\ChromeInstall.ps1"
 Invoke-WebRequest -Uri $url -OutFile $output1
