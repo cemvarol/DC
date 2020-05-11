@@ -1,5 +1,5 @@
 $url = "https://raw.githubusercontent.com/cemvarol/DC/master/1-SetDCReadyHerdemo.ps1"
-$outputX = "$env:USERPROFILE\desktop\HerdemoDC.ps1"
+$outputX = "$env:USERPROFILE\desktop\InstallHerdemoDC.ps1"
 Invoke-WebRequest -Uri $url -OutFile $outputX
 
 Start-Sleep -s 3
