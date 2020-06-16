@@ -5,7 +5,7 @@ Install-ADDSForest `
 -CreateDnsDelegation:$false `
 -DatabasePath "C:\Windows\NTDS" `
 -DomainMode "WinThreshold" `
--DomainName "aurian.com" `
+-DomainName "aurian.club" `
 -DomainNetbiosName "AURIAN" `
 -ForestMode "WinThreshold" `
 -InstallDns:$true `
