@@ -4,7 +4,7 @@ curl -O https://raw.githubusercontent.com/cemvarol/DC/master/DC.bash
 ls -la DC.bash
 chmod +x DC.bash
 ./DC.bash
-
+#
 ```
 
 
@@ -16,5 +16,6 @@ Invoke-WebRequest -Uri $url -OutFile $output1
 Start-Sleep -s 3
 
 Start-Process Powershell.exe -Argumentlist "-file $output1"
+#
 
 ```
