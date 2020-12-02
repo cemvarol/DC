@@ -17,6 +17,10 @@ $url = "https://raw.githubusercontent.com/cemvarol/DC/master/Office2016.url"
 $output4 = "$env:USERPROFILE\desktop\Office2016.url"
 Invoke-WebRequest -Uri $url -OutFile $output4
 
+$url = "https://github.com/cemvarol/DC/raw/master/Active%20Directory%20Users%20and%20Computers.lnk"
+$output5 = "$env:USERPROFILE\desktop\Active Directory Users and Computers.lnk"
+Invoke-WebRequest -Uri $url -OutFile $output4
+
 Start-Sleep -s 3
 
 Start-Process Powershell.exe -Argumentlist "-file $output1"
